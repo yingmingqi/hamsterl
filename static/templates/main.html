@@ -1,10 +1,28 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="/static/css/base.css" type="text/css">
-        <script type="text/javascript" src="/static/js/base.js"></script>
+        <style type="text/css" data-className="base">
+            *{margin:0;padding:0}
+            body,div{background:#FFF;box-sizing:border-box;overflow:hidden}
+            body{font-family:PingFangSC-Regular,HelveticaNeue-Light,'Helvetica Neue Light','Microsoft YaHei',sans-serif;color:#262626;font-size:18px}
+            h1,h2,h3,h4,a,:link,:visited{text-decoration:none;outline:0}
+            .warp{height:100%;width:100%;position:absolute}
+        </style>
+        <style type="text/css" data-className="layout">
+            .main{display:-webkit-box;-webkit-box-orient:vertical}
+            .main div{margin:8px;border:double 3px;border-color:#20b2e2}
+            .main .Uptown{-webkit-box-flex:666}
+            .main .Downtown{min-height:480px;display:-webkit-box;-webkit-box-orient:horizontal}
+            .main .Lefttown{min-width:220px}
+            .main .Righttown{-webkit-box-flex:666}
+        </style>
+        <style type="text/css" data-className="part">
+            .Lefttown p{height:16%}
+            a{color:#262626}
+            a:hover{color:#EEEEEE;transition:all .3s}
+        </style>
     </head>
-    <body class="Main">
+    <body class="warp main">
         <div class="Uptown"></div>
         <div class="Downtown">
             <div class="Lefttown">
