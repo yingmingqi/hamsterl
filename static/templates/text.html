@@ -1,15 +1,47 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <link rel="stylesheet" href="../static/css/base.css" type="text/css">
-        <script type="text/javascript" src="/static/js/base.js"></script>
+        <style type="text/css" data-className="base">
+            *{margin:0;padding:0}
+            body,div{background:#FFF;box-sizing:border-box;overflow:hidden}
+            body{font-family:PingFangSC-Regular,HelveticaNeue-Light,'Helvetica Neue Light','Microsoft YaHei',sans-serif;color:#262626;font-size:18px}
+            h1,h2,h3,h4,a,:link,:visited{text-decoration:none;outline:0}
+            .warp{height:100%;width:100%;position:absolute}
+        </style>
+        <style type="text/css" data-className="layout">
+            .text{display:-webkit-box;-webkit-box-orient:vertical}
+            .text div{margin:8px;border:groove 1px;border-color:#f2f5f6}
+            .text .head{min-height:78px;display:flex;align-items:center;justify-content:center;}
+            .text .body{-webkit-box-flex:233;display:-webkit-box;-webkit-box-orient:horizontal;}
+            .body .tagBox{width:216px;}
+            .body .cataLog{-webkit-box-flex:233;}
+        </style>
+        <style type="text/css" data-className="part">
+            .head .serch{width:80%;text-align:center;border:none;}
+            .serch input{width:50%;}
+            .body .cataLog{font-size:13px;color:grey;font-style:normal;-webkit-font-smoothing:antialiased;}
+            @media (max-width:1200px){.cataLog col:nth-of-type(3),.cataLog th:nth-of-type(3),.cataLog tr td:nth-of-type(3){display:none;}}
+            .cataLog table{border-spacing:0;border-collapse:collapse;}
+            .cataLog table thead th{height:20px;color:#262626;font:700 12px/16px PingFangSC-Regular,'-apple-system',Simsun;text-align:left;vertical-align:top;}
+            .cataLog table tbody td{height:40px;font:14px/40px PingFangSC-Regular,'-apple-system',Simsun;border-bottom:1px solid #e6e6e6;}
+            .cataLog a {color:grey;}
+            .cataLog a:hover {color:#ed4259;transition: all .3s;}
+            .cataLog .name,
+            .cataLog .chapter,
+            .cataLog .block{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
+            .cataLog .name{width:138px;color:#262626;transition: color .3s,background-color .3s;}
+            .cataLog .chapter{width:280px;color:#666;}
+            .cataLog .total{font-size:12px;color:#999;}
+            .cataLog .author{width: 90px;}
+            .cataLog .date{font:12px/40px Arail;text-align:right;color:#666;}
+        </style>
     </head>
-    <body class="Text">
-        <div class="Head">
+    <body class="warp text">
+        <div class="head">
             <div class="serch"><input name="key"> <button>serch</button></div>
         </div>
-        <div class="Body">
-            <div class="TagBox">
+        <div class="body">
+            <div class="tagBox">
                 <div style="text-align: center;"><input name="Filter"></div>
                 <div id="TagSelect">
                     <div class="tg" style="opacity:1.0"><a href="#" onclick=""><span>测试</span></a></div>
@@ -18,7 +50,7 @@
                     <div class="tg" style="opacity:1.0"><a href="#" onclick=""><span>测试</span></a></div>
                 </div>
             </div>
-            <div class="CataLog">
+            <div class="cataLog">
                 <div id="CataLog">
                     <table class="" style="width: 100%;text-align: left;">
                         <colgroup>
