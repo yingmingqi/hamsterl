@@ -1,49 +1,99 @@
-body, input, ul, li, ol, table, td, th {
+body,
+input,
+ul,
+li,
+ol,
+table,
+td,
+th {
     margin: 0;
     padding: 0;
     font-size: 12px;
-    font-family: PingFangSC-Regular,HelveticaNeue-Light,'Helvetica Neue Light','Microsoft YaHei',sans-serif,Simsun;
+    font-family: PingFangSC-Regular, HelveticaNeue-Light, 'Helvetica Neue Light', 'Microsoft YaHei', sans-serif, Simsun;
     color: #333;
 }
-li, ol, ul { list-style: none; }
-a { color: #999; }
-a, a:active, a:hover, a:link { text-decoration: none; }
-address, b, caption, cite, code, dfn, em, i, strong, th, var {
+
+li,
+ol,
+ul {
+    list-style: none;
+}
+
+a {
+    color: #999;
+}
+
+a,
+a:active,
+a:hover,
+a:link {
+    text-decoration: none;
+}
+
+address,
+b,
+caption,
+cite,
+code,
+dfn,
+em,
+i,
+strong,
+th,
+var {
     font-weight: 400;
     font-style: normal;
+}
+
+body {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
 }
 
 .wrap {
     width: 1200px;
     margin: 0 auto;
+    -webkit-box-flex: 1;
 }
+
 /* 头部搜索框 */
 .wrap .head {
     padding: 30px 0 10px;
     position: relative;
 }
+
 .wrap .head .searchBox {
     height: 34px;
     text-align: center;
     border: none;
 }
+
 .wrap .head .searchBox .serch {
-    width: 402px;
+    width: 407px;
     height: 32px;
     margin: auto;
 }
+
 .wrap .head .searchBox .serch input {
     width: 360px;
     height: 32px;
     float: left;
+    border-width: 2px 0 2px 2px;
+    border-color: #e1251b;
+    border-style: solid;
+    padding-right: 30px;
 }
+
 .wrap .head .searchBox .serch .search-btn {
-    margin: 0 1 0;
-    width: 40px;
+    margin: 0px 2px 0px 0px;
+    width: 45px;
     height: 32px;
     cursor: pointer;
     float: right;
+    background: #e1251b;
+    border: none;
 }
+
 /* Tag选择框 */
 .tag {
     background: #f7f7f7;
@@ -52,41 +102,48 @@ address, b, caption, cite, code, dfn, em, i, strong, th, var {
     overflow: hidden;
     font-size: 13px;
 }
+
 .tag .selector .kind {
     clear: both;
     padding: 3px 0;
     line-height: 20px;
     overflow: hidden;
 }
+
 .tag .selector .kind .bz {
     float: left;
     width: 88px;
     color: #999;
     padding-top: 5px;
 }
+
 .tag .selector .kind .nr {
     float: left;
     width: 1020px;
     color: #888;
 }
+
 .tag .selector .kind a {
     color: #151515;
     font-size: 13px;
     margin: 5px 6px 5px 7px;
     display: inline-block;
 }
+
 .tag .selector .kind a.current {
     color: #fff;
     background: #d32f2f;
     border-radius: 2px;
     padding: 0 5px;
 }
+
 .tag .selector .storeline {
     height: 1px;
     background: #e6e6e6;
     overflow: hidden;
     margin: 5px auto;
 }
+
 .tag .selector .kind .nr .selected {
     background: #d32f2f;
     line-height: 20px;
@@ -99,6 +156,7 @@ address, b, caption, cite, code, dfn, em, i, strong, th, var {
     margin: 5px 6px 5px 7px;
     float: left;
 }
+
 .tag .selector .kind .nr .selected a {
     position: absolute;
     width: 13px;
@@ -108,6 +166,7 @@ address, b, caption, cite, code, dfn, em, i, strong, th, var {
     margin: 0;
     overflow: hidden;
 }
+
 /* 选择排序 */
 .sort {
     line-height: 20px;
@@ -115,15 +174,18 @@ address, b, caption, cite, code, dfn, em, i, strong, th, var {
     height: 20px;
     overflow: hidden;
 }
+
 .sort .kind {
     float: left;
     position: absolute;
 }
+
 .sort .kind .bz {
     float: left;
     line-height: 25px;
     color: #999;
 }
+
 .sort .kind .fm {
     position: relative;
     float: left;
@@ -131,6 +193,7 @@ address, b, caption, cite, code, dfn, em, i, strong, th, var {
     z-index: 8;
     line-height: 25px;
 }
+
 .sort .kind .fm .selected {
     display: inline-block;
     height: 25px;
@@ -141,12 +204,15 @@ address, b, caption, cite, code, dfn, em, i, strong, th, var {
     position: relative;
     font-size: 13px;
 }
+
 .sort .kind .fm .selected.on {
     color: #d32f2f;
 }
+
 .sort .type {
     float: right;
 }
+
 /* 书籍目录 */
 .catalog {
     border: 1px solid #e6e6e6;
@@ -154,6 +220,7 @@ address, b, caption, cite, code, dfn, em, i, strong, th, var {
     font-size: 12px;
     overflow: hidden;
 }
+
 .catalog .con .tab-head {
     height: 45px;
     line-height: 45px;
@@ -161,35 +228,44 @@ address, b, caption, cite, code, dfn, em, i, strong, th, var {
     border-bottom: 1px solid #e6e6e6;
     padding-top: 5px;
 }
+
 .con span {
     float: left;
     padding-right: 20px;
 }
+
 .con .kind {
     width: 65px;
     padding-right: 15px;
 }
+
 .con .bookname {
     width: 200px;
 }
+
 .con .chap {
     width: 360px;
 }
+
 .con .status {
     width: 65px;
 }
+
 .con .count {
     width: 100px;
 }
+
 .con .author {
     width: 145px;
 }
+
 .con .time {
     width: 105px;
     padding-right: 0;
     text-align: center;
     float: right;
 }
+
 .directory li {
     font-size: 12px;
     border-bottom: 1px dotted #ccc;
@@ -201,6 +277,7 @@ address, b, caption, cite, code, dfn, em, i, strong, th, var {
     text-overflow: ellipsis;
     color: #999;
 }
+
 /* 分页 */
 .pages {
     margin-top: 40px;
@@ -209,6 +286,7 @@ address, b, caption, cite, code, dfn, em, i, strong, th, var {
     color: #999;
     text-align: center;
 }
+
 .pages a {
     border: 1px solid #ccc;
     border-radius: 1px;
@@ -220,12 +298,17 @@ address, b, caption, cite, code, dfn, em, i, strong, th, var {
     color: #999;
     vertical-align: middle;
 }
-.pages a.active, .pages a:hover, .pagebox_submit:hover {
+
+.pages a.active,
+.pages a:hover,
+.pagebox_submit:hover {
     background: #d32f2f;
     color: #fff;
     border: 1px solid #d32f2f;
 }
-.pagebar input.scrollpage, .pagebox_submit {
+
+.pagebar input.scrollpage,
+.pagebox_submit {
     width: 40px;
     text-align: center;
     line-height: 35px;
@@ -239,6 +322,7 @@ address, b, caption, cite, code, dfn, em, i, strong, th, var {
     margin-left: 8px;
     vertical-align: middle;
 }
+
 /* svg图标 */
 .icon-del {
     display: block;
@@ -251,6 +335,7 @@ address, b, caption, cite, code, dfn, em, i, strong, th, var {
     fill: none;
     float: right;
 }
+
 .icon-table {
     display: block;
     width: 24px;
@@ -261,6 +346,7 @@ address, b, caption, cite, code, dfn, em, i, strong, th, var {
     stroke-linejoin: miter;
     fill: none;
 }
+
 .icon-list {
     display: block;
     width: 24px;
@@ -271,13 +357,18 @@ address, b, caption, cite, code, dfn, em, i, strong, th, var {
     stroke-linejoin: miter;
     fill: none;
 }
+
 .icon-serch {
     display: block;
-    width: 24px;
+    width: 32px;
     height: 24px;
-    stroke: #2329D6;
+    stroke: #ffffff;
     stroke-width: 2;
     stroke-linecap: square;
     stroke-linejoin: miter;
     fill: none;
+}
+
+.footer {
+    background: black;
 }
