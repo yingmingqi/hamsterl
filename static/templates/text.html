@@ -1,89 +1,94 @@
-<!DOCTYPE html>
 <html>
     <head>
-        <style type="text/css" data-className="base">
-            *{margin:0;padding:0}
-            body,div{background:#FFF;box-sizing:border-box;overflow:hidden}
-            body{font-family:PingFangSC-Regular,HelveticaNeue-Light,'Helvetica Neue Light','Microsoft YaHei',sans-serif;color:#262626;font-size:18px}
-            h1,h2,h3,h4,a,:link,:visited{text-decoration:none;outline:0}
-            .warp{height:100%;width:100%;position:absolute}
-        </style>
-        <style type="text/css" data-className="layout">
-            .text{display:-webkit-box;-webkit-box-orient:vertical}
-            .text div{margin:8px;border:groove 1px;border-color:#f2f5f6}
-            .text .head{min-height:78px;display:flex;align-items:center;justify-content:center;}
-            .text .body{-webkit-box-flex:233;display:-webkit-box;-webkit-box-orient:horizontal;}
-            .body .tagBox{width:216px;}
-            .body .cataLog{-webkit-box-flex:233;}
-        </style>
-        <style type="text/css" data-className="part">
-            .head .serch{width:80%;text-align:center;border:none;}
-            .serch input{width:50%;}
-            .body .cataLog{font-size:13px;color:grey;font-style:normal;-webkit-font-smoothing:antialiased;}
-            @media (max-width:1200px){.cataLog col:nth-of-type(3),.cataLog th:nth-of-type(3),.cataLog tr td:nth-of-type(3){display:none;}}
-            .cataLog table{border-spacing:0;border-collapse:collapse;}
-            .cataLog table thead th{height:20px;color:#262626;font:700 12px/16px PingFangSC-Regular,'-apple-system',Simsun;text-align:left;vertical-align:top;}
-            .cataLog table tbody td{height:40px;font:14px/40px PingFangSC-Regular,'-apple-system',Simsun;border-bottom:1px solid #e6e6e6;}
-            .cataLog a {color:grey;}
-            .cataLog a:hover {color:#ed4259;transition: all .3s;}
-            .cataLog .name,
-            .cataLog .chapter,
-            .cataLog .block{display:block;overflow:hidden;white-space:nowrap;text-overflow:ellipsis;}
-            .cataLog .name{width:138px;color:#262626;transition: color .3s,background-color .3s;}
-            .cataLog .chapter{width:280px;color:#666;}
-            .cataLog .total{font-size:12px;color:#999;}
-            .cataLog .author{width: 90px;}
-            .cataLog .date{font:12px/40px Arail;text-align:right;color:#666;}
-        </style>
+        <link rel="stylesheet" href="../css/TextHome.css">
+        <script type="text/javascript" src="../js/TextHome.js" charset="utf-8"></script>
     </head>
-    <body class="warp text">
-        <div class="head">
-            <div class="serch"><input name="key"> <button>serch</button></div>
-        </div>
-        <div class="body">
-            <div class="tagBox">
-                <div style="text-align: center;"><input name="Filter"></div>
-                <div id="TagSelect">
-                    <div class="tg" style="opacity:1.0"><a href="#" onclick=""><span>测试</span></a></div>
-                </div>
-                <div id="TagList">
-                    <div class="tg" style="opacity:1.0"><a href="#" onclick=""><span>测试</span></a></div>
+    <body>
+        <div class="head-fixed" style="display: none;"></div>
+        <div class="wrap">
+            <!-- 头部搜索框 -->
+            <div class="head">
+                <div class="searchBox">
+					<div class="serch">
+                        <input name="key">
+                        <button class="search-btn"><svg viewBox="0 0 24 24" class="icon-serch"><path d="M14.4121122,14.4121122 L20,20"></path><circle cx="10" cy="10" r="6"></circle></svg></button>
+					</div>
                 </div>
             </div>
-            <div class="cataLog">
-                <div id="CataLog">
-                    <table class="" style="width: 100%;text-align: left;">
-                        <colgroup>
-                            <col width="15%">
-                            <col width="17%">
-                            <col width="33%">
-                            <col width="9%">
-                            <col width="12%">
-                            <col width="13%">
-                        </colgroup>
-                        <thead>
-                            <tr>
-                                <th>类别</th>
-                                <th>小说书名</th>
-                                <th>最新章节</th>
-                                <th>字数</th>
-                                <th>小说作者</th>
-                                <th style="text-align: right;">更新时间</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td><a class="td-one"  href="#" onclick="">测试</a></td>
-                                <td><a class="name"    href="#" onclick="">测试</a></td>
-                                <td><a class="chapter" href="#" onclick="">测试</a></td>
-                                <td><span class="total">666</span></td>
-                                <td><a class="author"  href="#" onclick="">测试</a></td>
-                                <td class="date">测试</td>
-                            </tr>
-                        </tbody>
-                    </table>
+            <!-- Tag选择框 -->
+            <div class="tag">
+                <div class="selector">
+                    <!--
+                    <div class="kind">
+                        <div class="bz">进度：</div>
+                        <div class="nr">
+							<a class="current store" href="javascript:void(0)" serialstatus="9" mode = "and" flag = "jindu:all">全部</a> 
+							<a class="store" href="javascript:void(0)" serialstatus="0" mode = "and" flag = "jindu:lianzai">连载中</a> 
+							<a class="store" href="javascript:void(0)" serialstatus="1" mode = "and" flag = "jindu:wanjie">已完结</a>
+						</div>
+                    </div>
+                    <div class="kind">
+                        <div class="bz">作品分类：</div>
+                        <div class="nr">
+                            <a class="current store" href="javascript:void(0)" categoryid="0">全部</a>
+                            <a class="store" href="javascript:void(0)" categoryid="1">奇幻玄幻<em></em></a>
+                        </div>
+                    </div>
+                    <div class="storeline"></div>
+                    <div class="kind">
+                        <div class="bz">已选条件：</div>
+                        <div class="nr" id="selectedParams">
+                            <span class="selected">奇幻玄幻<a href="javascript:void(0);" class="store" categoryid="0"><svg viewBox="0 0 24 24" class="icon-del" aria-hidden="true"><path d="M6 6L17 17M6 17L17 6"></path></svg></a></span>
+                        </div>
+                    </div>
+                    -->
+                </div>
+            </div>
+            <!-- 选择排序 -->
+            <div class="sort">
+                <div class="kind">
+                    <div class="bz">排序方式：</div>
+                    <div class="fm"><a href="javascript:void(0)" class="selected" order="0">更新时间降序</a></div>
+                    <div class="fm"><a href="javascript:void(0)" class="selected" order="0">更新时间升序</a></div>
+                    <div class="fm"><a href="javascript:void(0)" class="selected on" order="5">总字数降序</a></div>
+                    <div class="fm"><a href="javascript:void(0)" class="selected" order="0">总字数升序</a></div>
+                </div>
+                <div class="type">
+                    <a href="#"><svg viewBox="0 0 24 24" class="icon-list"><path d="M6 7L18 7M6 12L16 12M6 17L18 17"></path></svg></a>
+                </div>
+                <div class="type">
+                    <a href="#"><svg viewBox="0 0 24 24" class="icon-table"><rect width="4" height="4" x="6" y="7"></rect><rect width="4" height="4" x="13" y="7"></rect><rect width="4" height="4" x="6" y="14"></rect><rect width="4" height="4" x="13" y="14"></rect></svg></a>
+                </div>
+            </div>
+            <!-- 书籍目录 -->
+            <div class="catalog">
+                <div class="con">
+                    <div class="tab-head">
+                        <span class="kind">类别</span>
+                        <span class="bookname">书名</span>
+                        <span class="chap">章节</span>
+                        <span class="status">状态</span>
+                        <span class="count">总字数</span>
+                        <span class="author">作者</span>
+                        <span class="time">更新时间</span>
+                    </div>
+                    <ul class="directory">
+                        <li>
+                            <span class="kind"><a href="javascript:void(0)">[其他类别]</a></span>
+                            <span class="bookname"><a href="javascript:void(0)" target="_blank">书名</a></span>
+                            <span class="chap"><a href="#" target="_blank">正文 第七百七十二章</a></span>
+                            <span class="status">连载中</span>
+                            <span class="count">12321312</span>
+                            <span class="author"><a href="#" target="_blank">作者</a></span>
+                            <span class="time">08-20 23:56</span>
+                        </li>
+                    </ul>
+                    <div class="pages">
+                        <div class="pagenumber pagebar" page="1" count="991" total="49504"><a class="active scrollpage" href="javascript:void(0)" page="1">1</a><a class="scrollpage" href="javascript:void(0)" page="2">2</a><a class="scrollpage" href="javascript:void(0)" page="3">3</a><a class="scrollpage" href="javascript:void(0)" page="4">4</a><a class="scrollpage" href="javascript:void(0)" page="5">5</a><a class="scrollpage" href="javascript:void(0)" page="6">6</a><em>...</em><a class="scrollpage" href="javascript:void(0)" page="991">991</a><a href="javascript:void(0)" class="block scrollpage" page="2" title="下一页">&gt;</a><input type="text" class="text scrollpage rank_d_page_value" value="1"><input type="button" class="scrollpage rank_d_page_submit" value="跳转"></div>
+                    </div>
                 </div>
             </div>
         </div>
+        <div class="footer">1</div>
     </body>
 </html>

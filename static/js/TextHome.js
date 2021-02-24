@@ -67,7 +67,7 @@ const click = new Proxy(QA.pop,{
         //target(argumentsList[0])
         QA.pop(argumentsList[0])
     }
-})
+}) //click({"title":"bbc"})
 
 /* 
 {

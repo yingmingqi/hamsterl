@@ -46,14 +46,15 @@ var {
 }
 
 body {
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .wrap {
     width: 1200px;
     margin: 0 auto;
-    -webkit-box-flex: 1;
+    flex: 1;
 }
 
 /* 头部搜索框 */
@@ -370,5 +371,6 @@ body {
 }
 
 .footer {
+    flex: 0;
     background: black;
 }
