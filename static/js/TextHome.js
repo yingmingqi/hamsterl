@@ -1,3 +1,6 @@
+/* 
+    查询参数
+*/
 class QueryArgs {
     constructor() {
         this.Parameter = {
@@ -38,15 +41,15 @@ class QueryArgs {
         return this;
     }
     pop(obj) {
-        switch (obj.mode) {
+        switch (obj.dataset.mod) {
             case 'and':
-                this.adAndParam(obj.flag)
+                this.adAndParam(obj.dataset.flag)
                 break
             case 'or':
-                this.adOrParam(obj.flag)
+                this.adOrParam(obj.dataset.flag)
                 break
             case 'sort':
-                this.changeSort(obj.flag)
+                this.changeSort(obj.dataset.flag)
                 break
             default:
                 break
@@ -56,19 +59,47 @@ class QueryArgs {
 }
 
 /* 
-    单向绑定
+    单向绑定 > tag选项
 */
-const QA = new QueryArgs().newObj({ AndParam: {"jindu":"all"},OrParam: {},Sort: {"shijian":"jiangxu"} })
-const click = new Proxy(QA.pop,{
-    apply(target,thisArg,argumentsList) {
-        console.log('click pop func',argumentsList)
+const QA = new QueryArgs().newObj({ AndParam: {"serialstatus":"all"},OrParam: {},Sort: {"sort":"updatetimedesc"} })
+const Hanlder = function(){}
+const ProxyHanlder = {
+    apply: function(target, thisArg, argumentsList){
         let origin = JSON.parse(JSON.stringify(QA.Parameter)) // 深拷贝
-        // 原函数
-        //target(argumentsList[0])
+        console.log("arg list : ${argumentsList}")
+        console.log(argumentsList[0].dataset.mod,argumentsList[0].dataset.flag)
         QA.pop(argumentsList[0])
+        return
     }
-}) //click({"title":"bbc"})
+}
+const SelectedTag = new Proxy(Hanlder,ProxyHanlder)
 
+/* 
+    虚拟DOM
+*/
+class VElement {
+    constructor(tagName, props, children) {
+        this.tagName = tagName;
+        this.props = props;
+        this.children = children;
+    }
+    render() {
+        var el = document.createElement(this.tagName); // 根据tagName构建
+        var props = this.props;
+        for (var propName in props) { // 设置节点的DOM属性
+            var propValue = props[propName];
+            el.setAttribute(propName, propValue);
+        }
+        var children = this.children || [];
+        children.forEach(function (child) {
+            var childEl = (child instanceof VElement)
+                ? child.render() // 如果子节点也是虚拟DOM，递归构建DOM节点
+                : document.createTextNode(child); // 如果字符串，只构建文本节点
+            el.appendChild(childEl);
+        });
+        return el;
+    }
+}
 /* 
 {
     code:integer, #状态码
@@ -110,88 +141,3 @@ const click = new Proxy(QA.pop,{
     var ulRoot = ul.render()
     document.body.appendChild(ulRoot)
 */
-class DomTreeConstructor {
-    constructor(json) {
-        this.js = json;
-    }
-
-    getTagDom(virtualDom) {
-        let kind = document.createElement('div');
-        kind.className = "kind";
-        let bz = document.createElement('div');
-        bz.className = "bz";
-        let bzText = document.createTextNode(virtualDom.name + '：');
-        bz.appendChild(bzText);
-        kind.appendChild(bz);
-        let nr = document.createElement('div');
-        nr.className = "nr";
-        let current = document.createElement('a');
-        current.className = "current store";
-        current.href = "javascript:void(0)";
-        current.categor = "0";
-        let currentText = document.createTextNode('全部');
-        current.appendChild(currentText);
-        nr.appendChild(current);
-        for (var c in virtualDom.tags) {
-            let tag = virtualDom.tags[c];
-            let tmp = document.createElement('a');
-            tmp.className = "store";
-            tmp.href = "javascript:void(0)";
-            tmp.categor = tag;
-            let tmpText = document.createTextNode(tag);
-            tmp.appendChild(tmpText);
-            nr.appendChild(tmp);
-        }
-        kind.appendChild(nr);
-
-        return kind;
-    }
-
-    Tag(tagsJson) {
-        // var tagsJson = [{"name":"进度", "tags":[1,2,3]}, 
-        //                 {"name":"分类", "tags":[1,2,3]}];
-        var tmp = []
-        for (var i in tagsJson) {
-            tmp.push(this.getTagDom(tagsJson[i]));
-        }
-
-        tmp.push(this.getTagDom({
-            "name": "写作进度",
-            "tags": ["连载中", "已完结"]
-        }));
-
-        let storeline = document.createElement('div');
-        storeline.className = "storeline";
-        tmp.push(storeline);
-
-        let kind = document.createElement('div');
-        kind.className = "kind";
-        let bz = document.createElement('div');
-        bz.className = "bz";
-        let bzText = document.createTextNode('已选条件：');
-        bz.appendChild(bzText);
-        kind.appendChild(bz);
-        let nr = document.createElement('div');
-        nr.className = "nr";
-        nr.id = "selectedParams";
-        kind.appendChild(nr);
-        tmp.push(kind);
-
-        return tmp
-    }
-    TagTest() {
-        var jjjs = [{
-                "name": "标签",
-                "tags": ["五个", "六个"]
-            },
-            {
-                "name": "分类",
-                "tags": ["一个", "两个", "三个", "四个"]
-            }
-        ]
-        var s = this.Tag(jjjs)
-        for (var i in s) {
-            document.getElementsByClassName("selector")[0].appendChild(s[i])
-        }
-    }
-}

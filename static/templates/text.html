@@ -44,14 +44,56 @@
                     -->
                 </div>
             </div>
+            <script>
+                var el = VElement;
+
+                document.getElementsByClassName('selector')[0].appendChild(new el(
+                    'div',
+                    {class: 'kind'},
+                    [
+                    new el('div',{class: 'bz'},['进度：']),
+                    new el('div',{class: 'nr'},
+                            [new el('a',{href: 'javascript:void(0)',onclick: 'SelectedTag(this)','data-mod': 'and','data-flag': 'serialstatus:all', class: 'current store'},['全部'])
+                            ,new el('a',{href: 'javascript:void(0)',onclick: 'SelectedTag(this)','data-mod': 'and','data-flag': 'serialstatus:progress', class: 'store'},['连载中'])
+                            ,new el('a',{href: 'javascript:void(0)',onclick: 'SelectedTag(this)','data-mod': 'and','data-flag': 'serialstatus:finish', class: 'store'},['已完结'])
+                            ]
+                        )
+                    ]).render())
+
+                    document.getElementsByClassName('selector')[0].appendChild(new el(
+                    'div',
+                    {class: 'kind'},
+                    [
+                    new el('div',{class: 'bz'},['作品分类：']),
+                    new el('div',{class: 'nr'},
+                            [new el('a',{href: 'javascript:void(0)',onclick: 'SelectedTag(this)','data-mod': 'and','data-flag': 'category:all', class: 'current store'},['全部'])
+                            ,new el('a',{href: 'javascript:void(0)',onclick: 'SelectedTag(this)','data-mod': 'and','data-flag': 'category:test', class: 'store'},['测试'])
+                            ]
+                        )
+                    ]).render())
+
+                    document.getElementsByClassName('selector')[0].appendChild(new el('div',{class: 'storeline'},[]).render())
+                    document.getElementsByClassName('selector')[0].appendChild(new el(
+                    'div',
+                    {class: 'kind'},
+                    [
+                    new el('div',{class: 'bz'},['已选条件：']),
+                    new el('div',{id: 'selectedParams',class:'nr'},
+                            [new el('span',{class: 'selected'},
+                            ['测试',new el('a',{href: 'javascript:void(0)',onclick: 'SelectedTag(this)','data-mod': 'or','data-flag': 'categoryid:test1',class: 'store'}
+                            ,[new el('svg',{viewBox:'0 0 24 24',class:'icon-del','aria-hidden':'true'},[new el('path',{d:'M6 6L17 17M6 17L17 6'},[])])])])
+                            ]
+                        )
+                    ]).render())
+            </script>
             <!-- 选择排序 -->
             <div class="sort">
                 <div class="kind">
                     <div class="bz">排序方式：</div>
-                    <div class="fm"><a href="javascript:void(0)" class="selected" order="0">更新时间降序</a></div>
-                    <div class="fm"><a href="javascript:void(0)" class="selected" order="0">更新时间升序</a></div>
-                    <div class="fm"><a href="javascript:void(0)" class="selected on" order="5">总字数降序</a></div>
-                    <div class="fm"><a href="javascript:void(0)" class="selected" order="0">总字数升序</a></div>
+                    <div class="fm"><a href="javascript:void(0)" onclick="SelectedTag(this)" data-mod = "sort" data-flag = "sort:updatetimedesc" class="selected on" order="0">更新时间降序</a></div>
+                    <div class="fm"><a href="javascript:void(0)" onclick="SelectedTag(this)" data-mod = "sort" data-flag = "sort:updatetimeasc" class="selected" order="0">更新时间升序</a></div>
+                    <div class="fm"><a href="javascript:void(0)" onclick="SelectedTag(this)" data-mod = "sort" data-flag = "sort:totalwordsdesc" class="selected" order="5">总字数降序</a></div>
+                    <div class="fm"><a href="javascript:void(0)" onclick="SelectedTag(this)" data-mod = "sort" data-flag = "sort:totalwordsasc" class="selected" order="0">总字数升序</a></div>
                 </div>
                 <div class="type">
                     <a href="#"><svg viewBox="0 0 24 24" class="icon-list"><path d="M6 7L18 7M6 12L16 12M6 17L18 17"></path></svg></a>
