@@ -24,6 +24,6 @@ func HandlerFucnHomePage(w http.ResponseWriter, r *http.Request) {
 //	Methods: GET
 // }
 func HandlerFuncTextHome(w http.ResponseWriter, r *http.Request) {
-	t, _ := template.ParseFiles("static/templates/TemplateTextHomeHtml.html")
+	t, _ := template.ParseFiles("static/templates/templateTextHomeHtml.html")
 	t.Execute(w, nil)
 }

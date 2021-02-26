@@ -374,3 +374,10 @@ body {
     flex: 0;
     background: black;
 }
+.mmmm {
+    display: inline-block;
+    margin: 0px -2px -3px 3px;
+}
+.nr a {
+    display: inline-block;
+}
