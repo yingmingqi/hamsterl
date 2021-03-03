@@ -80,6 +80,18 @@
                         )
                     ]).render())
 
+                    document.getElementsByClassName('selector')[0].appendChild(new el(
+                        'div',
+                        {class: 'kind'},
+                        [
+                        new el('div',{class: 'bz'},['标签：']),
+                        new el('div',{class: 'nr'},
+                                [new el('a',{href: 'javascript:void(0)',onclick: 'SelectedTag(this)','data-mod': 'or','data-flag': 'tag:test1', class: 'store'},['测试1'])
+                                ,new el('a',{href: 'javascript:void(0)',onclick: 'SelectedTag(this)','data-mod': 'or','data-flag': 'tag:test2', class: 'store'},['测试2'])
+                                ]
+                            )
+                        ]).render())
+
                     document.getElementsByClassName('selector')[0].appendChild(new el('div',{class: 'storeline'},[]).render())
                     document.getElementsByClassName('selector')[0].appendChild(new el(
                     'div',
@@ -98,10 +110,10 @@
             <div class="sort">
                 <div class="kind">
                     <div class="bz">排序方式：</div>
-                    <div class="fm"><a href="javascript:void(0)" onclick="SelectedTag(this)" data-mod = "sort" data-flag = "sort:updatetimedesc" class="selected on" order="0">更新时间降序</a></div>
-                    <div class="fm"><a href="javascript:void(0)" onclick="SelectedTag(this)" data-mod = "sort" data-flag = "sort:updatetimeasc" class="selected" order="0">更新时间升序</a></div>
-                    <div class="fm"><a href="javascript:void(0)" onclick="SelectedTag(this)" data-mod = "sort" data-flag = "sort:totalwordsdesc" class="selected" order="5">总字数降序</a></div>
-                    <div class="fm"><a href="javascript:void(0)" onclick="SelectedTag(this)" data-mod = "sort" data-flag = "sort:totalwordsasc" class="selected" order="0">总字数升序</a></div>
+                    <div class="fm"><a href="javascript:void(0)" onclick="SelectedTag(this)" data-mod = "and" data-flag = "sort:updatetimedesc" class="selected on" order="0">更新时间降序</a></div>
+                    <div class="fm"><a href="javascript:void(0)" onclick="SelectedTag(this)" data-mod = "and" data-flag = "sort:updatetimeasc" class="selected" order="0">更新时间升序</a></div>
+                    <div class="fm"><a href="javascript:void(0)" onclick="SelectedTag(this)" data-mod = "and" data-flag = "sort:totalwordsdesc" class="selected" order="5">总字数降序</a></div>
+                    <div class="fm"><a href="javascript:void(0)" onclick="SelectedTag(this)" data-mod = "and" data-flag = "sort:totalwordsasc" class="selected" order="0">总字数升序</a></div>
                 </div>
                 <div class="type">
                     <a href="#"><svg viewBox="0 0 24 24" class="icon-list"><path d="M6 7L18 7M6 12L16 12M6 17L18 17"></path></svg></a>
